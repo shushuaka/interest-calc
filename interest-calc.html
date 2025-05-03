@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단리 이자 계산기</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 480px; margin: auto; }
+    input, button { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; box-sizing: border-box; }
+    button { background-color: #007bff; color: white; border: none; border-radius: 5px; }
+    .result { margin-top: 20px; font-weight: bold; text-align: center; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h3 style="text-align:center;">📈 정기예금 단리 이자 계산기</h3>
+
+  <label for="principal">예치금 (원)</label>
+  <input type="number" id="principal" placeholder="예: 10000000">
+
+  <label for="rate">연 이자율 (%)</label>
+  <input type="number" id="rate" step="0.01" placeholder="예: 3.5">
+
+  <label for="years">예치 기간 (년)</label>
+  <input type="number" id="years" step="0.1" placeholder="예: 1">
+
+  <button onclick="calculateInterest()">이자 계산하기</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculateInterest() {
+      const p = parseFloat(document.getElementById('principal').value);
+      const r = parseFloat(document.getElementById('rate').value);
+      const y = parseFloat(document.getElementById('years').value);
+
+      if (isNaN(p) || isNaN(r) || isNaN(y)) {
+        document.getElementById('result').innerText = '모든 값을 입력해주세요.';
+        return;
+      }
+
+      const gross = p * (r / 100) * y;
+      const net = gross * (1 - 0.154);
+
+      document.getElementById('result').innerHTML =
+        `💰 세전 이자: ${gross.toLocaleString()}원<br>💸 세후 이자: ${net.toLocaleString()}원`;
+    }
+  </script>
+</body>
+</html>
