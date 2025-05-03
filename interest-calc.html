@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>단리 이자 계산기</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 480px; margin: auto; }
-    input, button { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; box-sizing: border-box; }
-    button { background-color: #007bff; color: white; border: none; border-radius: 5px; }
-    .result { margin-top: 20px; font-weight: bold; text-align: center; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+      max-width: 480px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 25px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <h3 style="text-align:center;">📈 정기예금 단리 이자 계산기</h3>
+  <h2>📈 단리 이자 계산기</h2>
 
   <label for="principal">예치금 (원)</label>
-  <input type="number" id="principal" placeholder="예: 10000000">
+  <input type="number" id="principal" placeholder="예: 10000000" inputmode="numeric" />
 
   <label for="rate">연 이자율 (%)</label>
-  <input type="number" id="rate" step="0.01" placeholder="예: 3.5">
+  <input type="number" id="rate" step="0.01" placeholder="예: 3.5" inputmode="decimal" />
 
   <label for="years">예치 기간 (년)</label>
-  <input type="number" id="years" step="0.1" placeholder="예: 1">
+  <input type="number" id="years" step="0.1" placeholder="예: 1" inputmode="decimal" />
 
   <button onclick="calculateInterest()">이자 계산하기</button>
 
